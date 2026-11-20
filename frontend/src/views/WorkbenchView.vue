@@ -86,6 +86,9 @@
       </form>
     </div>
 
+    <RelationPipelinePanel v-if="meta.key === 'relation_graph'" />
+    <LinkProvenancePanel v-if="meta.key === 'knowledge_link'" />
+
     <footer class="page-foot">
       <span>共 {{ total }} 条{{ meta.name }}记录</span>
       <span v-if="errorMessage" class="error-text">{{ errorMessage }}</span>
@@ -103,6 +106,8 @@ import {
   moduleMeta,
   runAction as applyAction,
 } from '@/api/backend-service'
+import LinkProvenancePanel from '@/components/LinkProvenancePanel.vue'
+import RelationPipelinePanel from '@/components/RelationPipelinePanel.vue'
 import type { EntryRow } from '@/data/types'
 
 const props = defineProps<{ moduleKey: string }>()
